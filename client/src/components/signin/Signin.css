@@ -1,0 +1,146 @@
+.signin-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f6f8fa 60%, #e9f1fb 100%);
+}
+
+.signin-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(26, 34, 51, 0.10);
+  padding: 48px 36px 36px 36px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  animation: fadeInUp 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.signin-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #2e8b57;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
+
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.signin-input {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1.5px solid #e9f1fb;
+  font-size: 1rem;
+  background: #f6f8fa;
+  color: #1a2233;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.signin-input:focus {
+  border-color: #2e8b57;
+  box-shadow: 0 0 0 2px #b6fcd5;
+  outline: none;
+}
+.signin-input::placeholder {
+  color: #888;
+  opacity: 1;
+}
+
+.input-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-row .signin-input {
+  flex: 1;
+  padding-right: 50px; /* Space for the eye icon */
+}
+
+.input-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  cursor: pointer;
+  transition: color 0.2s;
+  z-index: 1;
+}
+
+.input-icon:hover {
+  color: #2e8b57;
+}
+
+.input-icon.toggle {
+  font-size: 1.1rem;
+}
+
+.signin-error {
+  background: #fee;
+  color: #c53030;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid #feb2b2;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  text-align: left;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.signin-btn {
+  padding: 14px 0;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(90deg, #2e8b57 60%, #ffd700 100%);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.15s;
+  box-shadow: 0 2px 8px #2e8b5744;
+}
+.signin-btn:hover, .signin-btn:focus {
+  background: linear-gradient(90deg, #b6fcd5 60%, #fffbe7 100%);
+  color: #1a2233;
+  box-shadow: 0 0 12px 2px #fffbe799, 0 4px 16px #b6fcd555;
+  transform: scale(1.05);
+}
+
+.signin-link {
+  margin-top: 18px;
+  font-size: 1rem;
+  color: #1a2233;
+}
+.signin-link a {
+  color: #2e8b57;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+.signin-link a:hover {
+  color: #ffd700;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+} 
