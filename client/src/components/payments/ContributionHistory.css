@@ -1,0 +1,80 @@
+.contrib-history-card {
+  padding: 24px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(26, 34, 51, 0.08);
+  border: 1px solid #e9f1fb;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.contrib-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 620px;
+}
+
+.contrib-table thead th {
+  text-align: left;
+  background: #f6f8fa;
+  color: #1a2233;
+  font-weight: 700;
+  padding: 12px 14px;
+  border-bottom: 2px solid #e9f1fb;
+}
+
+.contrib-table tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #e9f1fb;
+}
+
+.contrib-table tbody tr:nth-child(odd) {
+  background: #fff;
+}
+
+.contrib-table tbody tr:nth-child(even) {
+  background: #fdfdfd;
+}
+
+.amount-cell {
+  font-weight: 700;
+  color: #2e8b57;
+}
+
+.txn-cell {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  color: #333;
+}
+
+.status-pill {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: 1px solid #e9f1fb;
+}
+
+.status-pill.paid {
+  background: #e9f7ef;
+  color: #2e8b57;
+}
+
+.status-pill.pending {
+  background: #fff8db;
+  color: #b8860b;
+}
+
+@media (max-width: 768px) {
+  .contrib-history-card {
+    padding: 16px;
+  }
+  .contrib-table {
+    min-width: 520px;
+  }
+}
+
+
