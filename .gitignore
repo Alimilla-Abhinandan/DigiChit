@@ -1,0 +1,7 @@
+# Environment files (ignore at root, client, server, and all subdirectories)
+.env
+.env.*
+**/.env
+**/.env.*
+
+
