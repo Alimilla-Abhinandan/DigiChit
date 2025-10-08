@@ -72,13 +72,28 @@ export default function Signup() {
         }),
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get('content-type') || '';
+      let data;
+      try {
+        if (contentType.includes('application/json')) {
+          data = await response.json();
+        } else {
+          const text = await response.text();
+          data = { message: text };
+        }
+      } catch (parseErr) {
+        data = { message: 'Unexpected response format' };
+      }
 
       if (response.ok) {
         setSuccess(true);
         // Store token in localStorage
-        localStorage.setItem('token', data.data.token);
-        localStorage.setItem('user', JSON.stringify(data.data.user));
+        if (data && data.data && data.data.token) {
+          localStorage.setItem('token', data.data.token);
+        }
+        if (data && data.data && data.data.user) {
+          localStorage.setItem('user', JSON.stringify(data.data.user));
+        }
         // Redirect to dashboard or home page
     setTimeout(() => {
           window.location.href = '/dashboard';

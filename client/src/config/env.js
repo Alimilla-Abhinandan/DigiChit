@@ -1,7 +1,7 @@
 // Environment configuration utility
 const config = {
   // API Configuration
-  API_BASE_URL: import.meta.env.VITE_API_BASE_URLs,
+  API_BASE_URL: import.meta.env.VITE_API_BASE_URL || '/api',
   
   // Razorpay Configuration
   RAZORPAY_KEY_ID: import.meta.env.VITE_RAZORPAY_KEY_ID,
