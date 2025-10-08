@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./CreateGroup.css";
 import { motion } from "framer-motion";
 import { FaUsers, FaPlus, FaTimes, FaRupeeSign, FaSearch, FaUser, FaTimes as FaX } from "react-icons/fa";
+import config from "../../config/env";
 
 export default function CreateGroup({ onClose, onGroupCreated }) {
   const [formData, setFormData] = useState({
@@ -48,7 +49,7 @@ export default function CreateGroup({ onClose, onGroupCreated }) {
     setIsSearching(true);
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:5050/api/auth/search-users?query=${encodeURIComponent(query)}`, {
+      const response = await fetch(`${config.endpoints.auth.searchUsers}?query=${encodeURIComponent(query)}`, {
         headers: {
           "Authorization": `Bearer ${token}`
         }
@@ -151,7 +152,7 @@ export default function CreateGroup({ onClose, onGroupCreated }) {
     
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5050/api/group/create", {
+      const response = await fetch(config.endpoints.group.create, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

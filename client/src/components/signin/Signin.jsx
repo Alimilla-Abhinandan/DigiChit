@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Signin.css";
 import { motion } from "framer-motion";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import config from "../../config/env";
 
 export default function Signin() {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -25,7 +26,7 @@ export default function Signin() {
     setError("");
 
     try {
-      const response = await fetch('http://localhost:5050/api/auth/signin', {
+      const response = await fetch(config.endpoints.auth.signin, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

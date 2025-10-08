@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
+import config from '../../config/env';
 
 const RazorpayPayment = ({ amount, groupName, onSuccess, onFailure, onClose }) => {
-  const key_id = 'rzp_test_7aX03mWJpZE2T2';
+  const key_id = config.RAZORPAY_KEY_ID;
 
   useEffect(() => {
     // Load Razorpay script
@@ -32,7 +33,7 @@ const RazorpayPayment = ({ amount, groupName, onSuccess, onFailure, onClose }) =
         }
       };
 
-      const response = await axios.post('http://localhost:5050/api/payment/create-order', orderData);
+      const response = await axios.post(config.endpoints.payment.createOrder, orderData);
       
       if (!response.data.success) {
         throw new Error(response.data.message || 'Failed to create order');
@@ -57,7 +58,7 @@ const RazorpayPayment = ({ amount, groupName, onSuccess, onFailure, onClose }) =
               razorpay_signature: response.razorpay_signature
             };
 
-            const verificationResponse = await axios.post('http://localhost:5050/api/payment/verify-payment', verificationData);
+            const verificationResponse = await axios.post(config.endpoints.payment.verifyPayment, verificationData);
             
             if (verificationResponse.data.success) {
               // Payment verified successfully

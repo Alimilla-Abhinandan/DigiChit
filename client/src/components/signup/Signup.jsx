@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Signup.css";
 import { motion } from "framer-motion";
 import { FaEye, FaEyeSlash, FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import config from "../../config/env";
 
 function validateEmail(email) {
   // Simple email regex
@@ -59,7 +60,7 @@ export default function Signup() {
     setError("");
 
     try {
-      const response = await fetch('http://localhost:5050/api/auth/signup', {
+      const response = await fetch(config.endpoints.auth.signup, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

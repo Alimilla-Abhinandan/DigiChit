@@ -5,6 +5,7 @@ import { FaUsers, FaPlus, FaSearch, FaEnvelope, FaRupeeSign, FaMapMarkerAlt, FaU
 import { useNavigate } from "react-router-dom";
 import CreateGroup from "./CreateGroup";
 import JoinGroup from "./JoinGroup";
+import config from "../../config/env";
 
 export default function Groups() {
   const [groups, setGroups] = useState([]);
@@ -21,7 +22,7 @@ export default function Groups() {
   const fetchMyGroups = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5050/api/group/my-groups", {
+      const response = await fetch(config.endpoints.group.myGroups, {
         headers: {
           "Authorization": `Bearer ${token}`
         }

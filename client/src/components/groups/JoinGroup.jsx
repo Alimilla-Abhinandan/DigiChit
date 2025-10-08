@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./JoinGroup.css";
 import { motion } from "framer-motion";
 import { FaUsers, FaSearch, FaTimes, FaRupeeSign, FaMapMarkerAlt, FaUser } from "react-icons/fa";
+import config from "../../config/env";
 
 export default function JoinGroup({ onClose, onGroupJoined }) {
   const [availableGroups, setAvailableGroups] = useState([]);
@@ -16,7 +17,7 @@ export default function JoinGroup({ onClose, onGroupJoined }) {
   const fetchAvailableGroups = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5050/api/group/available", {
+      const response = await fetch(config.endpoints.group.available, {
         headers: {
           "Authorization": `Bearer ${token}`
         }
@@ -43,7 +44,7 @@ export default function JoinGroup({ onClose, onGroupJoined }) {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:5050/api/group/request-join/${groupId}`, {
+      const response = await fetch(config.endpoints.group.requestJoin(groupId), {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`

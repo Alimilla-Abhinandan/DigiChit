@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Profile.css";
 import { FaUserCircle, FaEdit, FaSave } from "react-icons/fa";
+import config from "../../config/env";
 
 export default function Profile() {
   const [form, setForm] = useState({ name: "", email: "" });
@@ -14,7 +15,7 @@ export default function Profile() {
       setLoading(true);
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5050/api/auth/profile", {
+        const res = await axios.get(config.endpoints.auth.profile, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setForm({ name: res.data.user.name, email: res.data.user.email });
@@ -45,7 +46,7 @@ export default function Profile() {
     try {
       const token = localStorage.getItem("token");
       const res = await axios.put(
-        "http://localhost:5050/api/auth/profile",
+        config.endpoints.auth.profile,
         form,
         { headers: { Authorization: `Bearer ${token}` } }
       );

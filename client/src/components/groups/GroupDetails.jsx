@@ -14,6 +14,7 @@ import {
   FaArrowLeft
 } from "react-icons/fa";
 import { useParams, useNavigate } from "react-router-dom";
+import config from "../../config/env";
 
 export default function GroupDetails({ onClose }) {
   const [group, setGroup] = useState(null);
@@ -34,7 +35,7 @@ export default function GroupDetails({ onClose }) {
     setRequestsError("");
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:5050/api/group/requests/${groupId}`, {
+      const res = await fetch(config.endpoints.group.requests(groupId), {
         headers: { "Authorization": `Bearer ${token}` }
       });
       const data = await res.json();
@@ -59,7 +60,7 @@ export default function GroupDetails({ onClose }) {
   const handleRequestAction = async (requestId, action) => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:5050/api/group/requests/${groupId}/${requestId}`, {
+      const res = await fetch(config.endpoints.group.requestAction(groupId, requestId), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -82,7 +83,7 @@ export default function GroupDetails({ onClose }) {
   const fetchGroupDetails = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:5050/api/group/${groupId}`, {
+      const response = await fetch(config.endpoints.group.details(groupId), {
         headers: {
           "Authorization": `Bearer ${token}`
         }
