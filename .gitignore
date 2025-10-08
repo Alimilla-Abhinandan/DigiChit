@@ -4,4 +4,8 @@
 **/.env
 **/.env.*
 
+# Node modules (ignore at root, client, server, and all subdirectories)
+node_modules/
+**/node_modules/
+
 
